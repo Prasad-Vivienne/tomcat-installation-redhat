@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "\n################################################################"
 echo -e "#                                                              #"
-echo -e "#                     ***Artisan Tek***                        #"
+echo -e "#                     ***Vivienne Tek***                       #"
 echo -e "#                    Tomcat Installation                       #"
 echo -e "#                                                              #"
 echo -e "################################################################"
