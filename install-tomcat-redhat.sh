@@ -6,11 +6,24 @@ echo -e "#                    Tomcat Installation                       #"
 echo -e "#                                                              #"
 echo -e "################################################################"
 
-# Installing necessary packages
+#!/bin/bash
+
 echo -e "\n\n*****Installing Necessary Packages"
-sudo yum update -y 1>/dev/null
-sudo yum install -y java-11-openjdk wget 1>/dev/null
+
+# Update system packages
+sudo yum -y update >/dev/null 2>&1
+
+# Install Java and wget with error handling
+if ! sudo yum install -y java-11-openjdk wget >/dev/null 2>&1; then
+    echo "Error: Failed to install java-11-openjdk or wget. Trying alternate Java version..."
+    sudo yum install -y java-17-openjdk wget >/dev/null 2>&1 || {
+        echo "Error: Could not install Java or wget. Check your repo settings."
+        exit 1
+    }
+fi
+
 echo "            -> Done"
+
 
 # Downloading Apache Tomcat 9.0.68 version to OPT folder
 echo "*****Downloading Apache Tomcat 9.0.68 version"
